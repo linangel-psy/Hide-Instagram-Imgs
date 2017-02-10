@@ -1,0 +1,26 @@
+{
+	"manifest_version": 2,
+
+	"name": "Hide Instagram Imgs",
+	"description": "This extension hides unwanted instagram images from facebook news feed",
+	"version": "1.0",
+
+	"background": {
+    "scripts": ["background.js"]
+  },
+	
+	"content_scripts": [{
+		"matches": ["https://www.facebook.com/*"],
+		"js": ["jquery.min.js", "hide.js"]
+	}],
+
+	"page_action": {
+	 "default_icon": "icon.png",
+	 "default_title": "Hide Instagram Img",
+	 "default_popup": "menu.html"
+	},
+
+	"permissions": [
+		"activeTab", "declarativeContent", "tabs", "https://www.facebook.com/*"
+	]
+}
