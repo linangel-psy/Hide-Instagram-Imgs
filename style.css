@@ -1,4 +1,13 @@
 .insta-none {
 	display: none;
-	height: 1px;
+}
+.insta-link {
+	margin: 0;
+	padding: 0;
+	font-weight: 70%;
+	color: #AFB4BD;
+}
+.insta-link:before {
+	content: "Show img";
+	display: block;
 }

@@ -1,5 +1,5 @@
 //Switchers
-var hideAll = true;
+var hideAll = false;
 var hideUser = false;
 //List of users ids to hide images
 var users = [];
@@ -35,7 +35,8 @@ var HideSwitch = function(id){
 //Functions with main logic
 //Hiding images reposted from instagram
 var HideFunction = function() {
-	$('*').removeClass('insta-none');
+	$('.uiScaledImageContainer').show('slow');
+	$('*').removeClass('insta-none').removeClass('insta-link');
 	elements = undefined;
 	if(hideAll){
 		elements = $('a._5pcq:contains("Instagram")').parents('.fbUserContent').find('.uiScaledImageContainer');
@@ -47,7 +48,9 @@ var HideFunction = function() {
 	}
 	if(elements){
 		console.log('show all');
+		elements.hide('slow');
 		elements.addClass('insta-none');
+		elements.parent().addClass('insta-link');
 	}
 };
 
