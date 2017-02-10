@@ -8,6 +8,8 @@ var elements;
 
 //When buttons on extension popup clicked, HideSwitch function called with id of button as argument
 $('.hide-button').click(function(e){
+	$('.hide-button').not(this).removeClass('active-btn');
+	$(this).toggleClass('active-btn');
 	var id = e.target.id; 
 	chrome.tabs.executeScript({
 		code: 'HideSwitch("' + id + '")'
