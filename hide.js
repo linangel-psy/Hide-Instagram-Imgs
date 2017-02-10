@@ -1,8 +1,10 @@
 //Switchers
 var hideAll = true;
 var hideUser = false;
-//list of users ids to hide images
+//List of users ids to hide images
 var users = [];
+//DOM elements to hide
+var elements;
 
 //When buttons on extension popup clicked, HideSwitch function called with id of button as argument
 $('.hide-button').click(function(e){
@@ -14,13 +16,13 @@ $('.hide-button').click(function(e){
 
 //Switchers status changing
 var HideSwitch = function(id){
-	if(id == "hideAll"){
+	if(id == 'hideAll'){
 		hideAll = !hideAll;
 		if(hideUser){
 			hideUser = !hideUser;
 		}
 	}
-	else if(id == "hideUser") {
+	else if(id == 'hideUser') {
 		hideUser = !hideUser;
 		if(hideAll){
 			hideAll = !hideAll;
@@ -31,22 +33,21 @@ var HideSwitch = function(id){
 };
 
 //Functions with main logic
-
-//Hiding all images reposted from instagram
-var HideAllFunction = function() {
-	$('a._5pcq:contains("Instagram")').parents('.fbUserContent').find('.uiScaledImageContainer').css({'display':'none','height':'1px'});
-};
-//Hiding all images reposted from instagram by chosen users
-var HideUserFunction = function() {
-	console.log("Test");
-};
-//Calling proper hiding function
+//Hiding images reposted from instagram
 var HideFunction = function() {
-	if(hideUser){
-		HideUserFunction();
+	$('*').removeClass('insta-none');
+	elements = undefined;
+	if(hideAll){
+		elements = $('a._5pcq:contains("Instagram")').parents('.fbUserContent').find('.uiScaledImageContainer');
+		console.log('hide all');
 	}
-	else if(hideAll) {
-		HideAllFunction();
+	else if(hideUser) {
+		elements = undefined;
+		console.log('hide user');
+	}
+	if(elements){
+		console.log('show all');
+		elements.addClass('insta-none');
 	}
 };
 
